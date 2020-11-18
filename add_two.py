@@ -50,7 +50,6 @@ def addTwoNumbers(l1, l2):
     last1 = None
     last2 = None
 
-    current_element = None
     while(temp1 or temp2):
 
         if temp1 == None:
