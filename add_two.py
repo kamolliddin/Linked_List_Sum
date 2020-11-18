@@ -38,3 +38,44 @@ class LinkedList:
             values_list.append(temp.val)
             temp = temp.next
         return values_list
+
+# main function to add two linked list values
+
+
+def addTwoNumbers(l1, l2):
+    sum_list = None
+    temp1 = l1
+    temp2 = l2
+    carry = 0
+    last1 = None
+    last2 = None
+
+    current_element = None
+    while(temp1 or temp2):
+
+        if temp1 == None:
+            temp1 = ListNode(0, None)
+        elif temp2 == None:
+            temp2 = ListNode(0, None)
+
+        val1 = temp1.val
+        val2 = temp2.val
+        sum1 = val1 + val2 + carry
+        carry = sum1 // 10
+        to_add = sum1 % 10
+
+        if sum_list == None:
+            sum_list = ListNode(to_add, None)
+        else:
+            LinkedList.get_last(sum_list).next = ListNode(to_add, None)
+
+        last1 = temp1
+        last2 = temp2
+
+        temp1 = temp1.next
+        temp2 = temp2.next
+
+    if ((last1.val + last2.val + carry) >= 10) and carry > 0:
+        LinkedList.get_last(sum_list).next = ListNode(carry, None)
+
+    return sum_list
